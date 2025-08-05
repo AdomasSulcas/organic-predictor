@@ -14,8 +14,8 @@ A clean, production-ready Prophet-based forecasting tool for organic traffic pre
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/organic-traffic-prophet.git
-cd organic-traffic-prophet
+git clone https://github.com/AdomasSulcas/organic-predictor
+cd organic-predictor
 
 # Create a virtual environment
 python -m venv venv
