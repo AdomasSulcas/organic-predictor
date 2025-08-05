@@ -98,25 +98,24 @@ from src.preprocessor import TrafficPreprocessor
 from src.model import TrafficProphetModel
 from src.config import Config
 
-# Load and preprocess data
+
 loader = TrafficDataLoader('your_data.csv')
 df = loader.load()
 
 preprocessor = TrafficPreprocessor()
 df_processed = preprocessor.process(df)
 
-# Train model
+
 model = TrafficProphetModel(Config())
 model.fit(df_processed)
 
-# Generate predictions
+
 forecast = model.predict(periods=90)
 ```
 
 ### Cross-Validation
 
 ```python
-# Perform time series cross-validation
 cv_results = model.cross_validate(
     initial_days=365,
     period_days=30,
