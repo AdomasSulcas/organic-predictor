@@ -7,15 +7,15 @@ A clean, production-ready Prophet-based forecasting tool for organic traffic pre
 - **Prophet-based forecasting** with automatic seasonality detection
 - **Comprehensive traffic analysis** including weekly and monthly patterns
 - **Anomaly detection** to identify unusual traffic spikes or drops
-- **Beautiful visualizations** for insights and presentations
+- **Interactive Plotly visualizations** for insights and presentations
 - **Modular architecture** for easy customization and extension
 
 ## Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/organic-traffic-prophet.git
-cd organic-traffic-prophet
+git clone https://github.com/AdomasSulcas/organic-predictor.git
+cd organic-predictor
 
 # Create a virtual environment
 python -m venv venv
@@ -55,14 +55,13 @@ Date,Clicks,Impressions,CTR,Position
 
 The tool generates:
 - `predictions.csv`: Future traffic predictions with confidence intervals
-- `forecast.png`: Visual forecast with historical data
-- `components.png`: Breakdown of trend, weekly, and seasonal patterns
-- `analysis.png`: Comprehensive traffic analysis visualizations
+- Interactive Plotly visualizations for forecast, components, and analysis
+- Comprehensive traffic analysis with trend and seasonal pattern breakdown
 
 ## Project Structure
 
 ```
-organic-traffic-prophet/
+organic-predictor/
 ├── main.py                 # Entry point
 ├── requirements.txt        # Dependencies
 ├── README.md              # This file
