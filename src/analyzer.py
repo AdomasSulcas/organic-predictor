@@ -59,17 +59,13 @@ class TrafficAnalyzer:
         return weekly_pattern
     
     def _analyze_monthly_pattern(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Analyze monthly traffic patterns."""
-        monthly_avg = df.groupby('month')['y'].mean()
-        
-        month_names = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        """Analyze monthly traffic patterns by year-month periods."""
+        monthly_avg = df.groupby(df['ds'].dt.to_period('M'))['y'].mean()
         
         monthly_pattern = pd.DataFrame({
-            'month': month_names,
-            'average_clicks': [monthly_avg.get(i+1, 0) for i in range(12)],
-            'relative_strength': [(monthly_avg.get(i+1, 0) / monthly_avg.mean() - 1) * 100 
-                                for i in range(12)]
+            'year_month': monthly_avg.index.astype(str),
+            'average_clicks': monthly_avg.values,
+            'relative_strength': ((monthly_avg.values / monthly_avg.mean()) - 1) * 100
         })
         
         return monthly_pattern

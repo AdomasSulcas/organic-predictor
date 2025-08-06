@@ -474,11 +474,11 @@ class TrafficVisualizer:
         fig.update_yaxes(title_text='Average Clicks', row=row, col=col)
     
     def _plot_monthly_pattern_plotly(self, fig, monthly_data: pd.DataFrame, row: int, col: int) -> None:
-        """Plot monthly traffic pattern."""
+        """Plot monthly traffic pattern by year-month."""
         peak_month = monthly_data.loc[monthly_data['average_clicks'].idxmax()]
         
         fig.add_trace(go.Scatter(
-            x=monthly_data['month'], 
+            x=monthly_data['year_month'], 
             y=monthly_data['average_clicks'],
             mode='lines+markers',
             line=dict(width=2),
@@ -494,25 +494,15 @@ class TrafficVisualizer:
         
         # Add peak indicator in annotation
         fig.add_annotation(
-            x=peak_month['month'],
+            x=peak_month['year_month'],
             y=peak_month['average_clicks'],
-            text=f"Peak: {peak_month['month']}",
+            text=f"Peak: {peak_month['year_month']}",
             showarrow=True,
             arrowhead=2,
             row=row, col=col
         )
         
-        # Add peak annotation
-        fig.add_annotation(
-            x=peak_month['month'],
-            y=peak_month['average_clicks'],
-            text=f"Peak: {peak_month['month']}",
-            showarrow=True,
-            arrowhead=2,
-            row=row, col=col
-        )
-        
-        fig.update_xaxes(title_text='Month', row=row, col=col)
+        fig.update_xaxes(title_text='Year-Month', row=row, col=col, tickangle=45)
         fig.update_yaxes(title_text='Average Clicks', row=row, col=col)
     
     def _plot_growth_trend_plotly(self, fig, df: pd.DataFrame, row: int, col: int) -> None:
